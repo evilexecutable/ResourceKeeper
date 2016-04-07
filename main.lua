@@ -12,14 +12,18 @@ getspace = tonumber(string.match(readfreespace, "%d+")) / 1024 / 1024 / 1024
 print(getspace .. " Gigabytes Free on C:\\")
 -- Close the freespace file so we can continue to open some later
 io.input():close()
+collectgarbage()
 -------------------------------------------------------------------------------------------------------
 
 -- Now lets calculate RAM in the same way.
-os.execute('wmic OS get FreePhysicalMemory > freeram.txt')
+os.execute('wmic /node:"%COMPUTERNAME%" OS get FreePhysicalMemory /VALUE > ram.txt')
+-- Convert the file from Unicode to ANSI so Lua can read it correctly.
+os.execute('type "ram.txt" > freeram.txt')
 -- Load file again.
 loadfreeram = assert(io.input("freeram.txt"))
 -- and we convert to string
 tostring(loadfreeram)
 readfreeram = io.read("*all")
 -- Test print
-test2 = print(tonumber(string.match(readfreeram, "%d+")))
+getram = tonumber(string.match(readfreeram, "%d+")) /1024
+print(getram .. " MB Free RAM")
