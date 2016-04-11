@@ -1,5 +1,7 @@
 local Mailgun = require("mailgun").Mailgun
 
+--Get Hostname
+pcname = os.execute("hostname")
 -- Lets run a CMD command that will get the free space for the C drive and save to a file.
 os.execute('wmic /node:"%COMPUTERNAME%" LogicalDisk Where DriveType="3" Get DeviceID,FreeSpace|find /I "c:" > freespace.txt')
 -- Now lets make that file the only input file.
@@ -40,10 +42,12 @@ local m = Mailgun({
 
 m:send_email({
   to = "",
-  subject = "Email",
+  cc = "",
+  subject = "Server Report for" .. pcname ..,
   html = false,
-  body = [[Server Report for ]] .. "TEST PC \n" .. [[
-  		Ram:]] .. getram .. [[ MB Free]] .. "\n" .. [[
-  		HDD:]] .. getspace .. [[ GB Free]] .. "\n" .. [[
+  body = [[Server Report for ]] --.. pcname "\n" .. [[
+  		--Ram:]] .. getram .. [[ MB Free]] .. "\n" .. [[
+  		--HDD:]] .. getspace .. [[ GB Free]] .. "\n" .. [[
   ]]
 })
+
