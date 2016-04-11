@@ -49,8 +49,7 @@ collectgarbage()
 -------------------------------------------------------------------------------------------------------
 
 -- Lets run a command to get CPU usage, time etc.
-os.execute('typeperf "\processor(_total)\% processor time" -sc 25 > cpu-usage.txt')
-os.execute('type "cpu-usage.txt > cpu.txt')
+os.execute('getcpu.bat')
 -- Load the file in memory to get what we need.
 readcpusage = assert(io.input("cpu.txt"))
 tostring(readcpusage)
