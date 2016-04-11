@@ -24,8 +24,19 @@ readfreeram = io.read("*all")
 -- Now we need to read the numbers from the file that's in a variable and divide by 1024 to get the MB.
 getram = tonumber(string.match(readfreeram, "%d+")) /1024
 print(getram .. " MB Free RAM")
+-- Close file and collect garbage.
+io.input():close()
+collectgarbage()
 -------------------------------------------------------------------------------------------------------
 
+-- Lets run a command to get CPU usage, time etc.
+os.execute('typeperf "\processor(_total)\% processor time" -sc 25 > cpu-usage.txt')
+os.execute('type "cpu-usage.txt > cpu.txt')
+-- Load the file in memory to get what we need.
+readcpusage = io.input("cpu.txt")
+-- We don't need to do anything further so we can keep it here to add to the email below.
+
+-------------------------------------------------------------------------------------------------------
 -- Email Support
 
 local m = Mailgun({
