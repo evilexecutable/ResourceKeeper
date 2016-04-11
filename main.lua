@@ -1,3 +1,22 @@
+-----------------------------------------------------------------------------
+--    {ResourceKeeper}
+--    Copyright (C) {2016}  {Lewis Smith}
+--
+--    This program is free software; you can redistribute it and/or modify
+--    it under the terms of the GNU General Public License as published by
+--    the Free Software Foundation; either version 2 of the License, or
+--    (at your option) any later version.
+
+--    This program is distributed in the hope that it will be useful,
+--    but WITHOUT ANY WARRANTY; without even the implied warranty of
+--    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+--    GNU General Public License for more details.
+
+--    You should have received a copy of the GNU General Public License along
+--    with this program; if not, write to the Free Software Foundation, Inc.,
+--    51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+---------------------------------------------------------------------------
+
 local Mailgun = require("mailgun").Mailgun
 
 -- Get Hostname for later use.
@@ -33,7 +52,10 @@ collectgarbage()
 os.execute('typeperf "\processor(_total)\% processor time" -sc 25 > cpu-usage.txt')
 os.execute('type "cpu-usage.txt > cpu.txt')
 -- Load the file in memory to get what we need.
-readcpusage = tostring(io.input("cpu.txt"))
+readcpusage = assert(io.input("cpu.txt"))
+tostring(readcpusage)
+readcpusage = io.read("*all")
+getcpu = tostring(readcpusage)
 -- We don't need to do anything further so we can keep it here to add to the email below.
 
 -------------------------------------------------------------------------------------------------------
@@ -52,7 +74,7 @@ m:send_email({
   body = [[Server Report for ]] .. pcname "\n" .. [[
   		Ram:]] .. getram .. [[ MB Free]] .. "\n" .. [[
   		HDD:]] .. getspace .. [[ GB Free]] .. "\n\n\n\n" .. [[
-      CPU Usage Below:]] .. readcpusage .. [[
+      CPU Usage Below:]] .. getcpu .. [[
   ]]
 })
 
