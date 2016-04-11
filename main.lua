@@ -1,34 +1,27 @@
 local Mailgun = require("mailgun").Mailgun
 
---Get Hostname
+-- Get Hostname for later use.
 pcname = os.execute("hostname")
--- Lets run a CMD command that will get the free space for the C drive and save to a file.
+-- Lets run a CMD command that will get the free space for the C drive and save to a file and load that file in memory.
 os.execute('wmic /node:"%COMPUTERNAME%" LogicalDisk Where DriveType="3" Get DeviceID,FreeSpace|find /I "c:" > freespace.txt')
--- Now lets make that file the only input file.
 loadfreespace = assert(io.input("freespace.txt"))
--- Convert from userdata to string and read the entire file (it's only 1 line)
 tostring(loadfreespace)
 readfreespace = io.read("*all")
--- Print it to test it has only displayed the free space. Now we can convert from bytes to GB.
---test = print(tonumber(string.match(readfreespace, "%d+")))
--- Calculate from B to GB and print
+-- Read the numbers from the file in the variable and divide by 1024 3x to get from Bytes to GB.
 getspace = tonumber(string.match(readfreespace, "%d+")) / 1024 / 1024 / 1024
 print(getspace .. " Gigabytes Free on C:\\")
--- Close the freespace file so we can continue to open some later
+-- Close the file so we can continue to open some later then collect garbage manually to keep overhead as low as possible (useful for next part).
 io.input():close()
 collectgarbage()
 -------------------------------------------------------------------------------------------------------
 
--- Now lets calculate RAM in the same way.
+-- We need to calculate the free RAM of the local machine, convert the file to ANSI and load it in memory.
 os.execute('wmic /node:"%COMPUTERNAME%" OS get FreePhysicalMemory /VALUE > ram.txt')
--- Convert the file from Unicode to ANSI so Lua can read it correctly.
 os.execute('type "ram.txt" > freeram.txt')
--- Load file again.
 loadfreeram = assert(io.input("freeram.txt"))
--- and we convert to string
 tostring(loadfreeram)
 readfreeram = io.read("*all")
--- Test print
+-- Now we need to read the numbers from the file that's in a variable and divide by 1024 to get the MB.
 getram = tonumber(string.match(readfreeram, "%d+")) /1024
 print(getram .. " MB Free RAM")
 -------------------------------------------------------------------------------------------------------
