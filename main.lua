@@ -42,8 +42,8 @@ m:send_email({
   to = "",
   subject = "Email",
   html = false,
-  body = [[Server Report for]] .. "TEST PC" .. [[
-  		Ram:]] .. getram .. [[ MB Free 
-  		HDD:]] .. getspace .. [[ GB Free
+  body = [[Server Report for ]] .. "TEST PC \n" .. [[
+  		Ram:]] .. getram .. [[ MB Free]] .. "\n" .. [[
+  		HDD:]] .. getspace .. [[ GB Free]] .. "\n" .. [[
   ]]
 })
