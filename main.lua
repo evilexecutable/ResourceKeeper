@@ -45,7 +45,7 @@ m:send_email({
   cc = "",
   subject = "Server Report for" .. pcname ..,
   html = false,
-  body = [[Server Report for ]] --.. pcname "\n" .. [[
+  body = [[Server Report for ]] .. pcname "\n" .. [[
   		--Ram:]] .. getram .. [[ MB Free]] .. "\n" .. [[
   		--HDD:]] .. getspace .. [[ GB Free]] .. "\n" .. [[
   ]]
