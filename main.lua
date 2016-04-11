@@ -1,3 +1,5 @@
+local Mailgun = require("mailgun").Mailgun
+
 -- Lets run a CMD command that will get the free space for the C drive and save to a file.
 os.execute('wmic /node:"%COMPUTERNAME%" LogicalDisk Where DriveType="3" Get DeviceID,FreeSpace|find /I "c:" > freespace.txt')
 -- Now lets make that file the only input file.
@@ -27,3 +29,21 @@ readfreeram = io.read("*all")
 -- Test print
 getram = tonumber(string.match(readfreeram, "%d+")) /1024
 print(getram .. " MB Free RAM")
+-------------------------------------------------------------------------------------------------------
+
+-- Email Support
+
+local m = Mailgun({
+  domain = "",
+  api_key = ""
+})
+
+m:send_email({
+  to = "",
+  subject = "Email",
+  html = false,
+  body = [[Server Report for]] .. "TEST PC" .. [[
+  		Ram:]] .. getram .. [[ MB Free 
+  		HDD:]] .. getspace .. [[ GB Free
+  ]]
+})
