@@ -33,7 +33,7 @@ collectgarbage()
 os.execute('typeperf "\processor(_total)\% processor time" -sc 25 > cpu-usage.txt')
 os.execute('type "cpu-usage.txt > cpu.txt')
 -- Load the file in memory to get what we need.
-readcpusage = io.input("cpu.txt")
+readcpusage = tostring(io.input("cpu.txt"))
 -- We don't need to do anything further so we can keep it here to add to the email below.
 
 -------------------------------------------------------------------------------------------------------
@@ -50,8 +50,9 @@ m:send_email({
   subject = "Server Report for" .. pcname ..,
   html = false,
   body = [[Server Report for ]] .. pcname "\n" .. [[
-  		--Ram:]] .. getram .. [[ MB Free]] .. "\n" .. [[
-  		--HDD:]] .. getspace .. [[ GB Free]] .. "\n" .. [[
+  		Ram:]] .. getram .. [[ MB Free]] .. "\n" .. [[
+  		HDD:]] .. getspace .. [[ GB Free]] .. "\n\n\n\n" .. [[
+      CPU Usage Below:]] .. readcpusage .. [[
   ]]
 })
 
