@@ -1,1 +1,1 @@
-typeperf "\processor(_total)\% processor time" -sc 25 > cpu-usage.txt
+typeperf "\processor(_total)\%% processor time" -sc 25 > cpu-usage.txt
