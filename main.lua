@@ -17,10 +17,10 @@
 --    51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ---------------------------------------------------------------------------
 
-local Mailgun = require("mailgun").Mailgun
-
 -- Get Hostname for later use.
 pcname = os.execute("hostname")
+tostring(pcname)
+
 -- Lets run a CMD command that will get the free space for the C drive and save to a file and load that file in memory.
 os.execute('wmic /node:"%COMPUTERNAME%" LogicalDisk Where DriveType="3" Get DeviceID,FreeSpace|find /I "c:" > freespace.txt')
 loadfreespace = assert(io.input("freespace.txt"))
@@ -48,33 +48,22 @@ io.input():close()
 collectgarbage()
 -------------------------------------------------------------------------------------------------------
 
--- Lets run a command to get CPU usage, time etc.
-os.execute('getcpu.bat')
--- Load the file in memory to get what we need.
-readcpusage = assert(io.input("cpu-usage.txt"))
-tostring(readcpusage)
-readcpusage = io.read("*all")
-getcpu = tostring(readcpusage)
--- We don't need to do anything further so we can keep it here to add to the email below.
+-- Check if resources are below a dangerous level, if they are, run the email script.
+if getspace <= 50
+	then
+	dofile("email.lua")
+	else
+end
+
+if getram <= 2048
+	then
+	dofile("email.lua")
+	else
+end
+-------------------------------------------------------------------------------------------------------
+
+-- Moved cpu functions to seperate file, lets run it. 
+dofile("getcpu.lua")
 
 -------------------------------------------------------------------------------------------------------
--- Email Support
-
-local m = Mailgun({
-  domain = "",
-  api_key = ""
-})
-
-m:send_email({
-  from = "",
-  to = "",
-  cc = "",
-  subject = "Server Report for ",
-  html = false,
-  body = [[Server Report for ]] .."\n".. [[
-  		Ram:]] .. getram .. [[ MB Free]] .. "\n" .. [[
-  		HDD:]] .. getspace .. [[ GB Free]] .. "\n\n\n\n" .. [[
-      CPU Usage Below:]] .. getcpu .. [[
-  ]]
-})
 
