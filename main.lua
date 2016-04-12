@@ -48,7 +48,51 @@ io.input():close()
 collectgarbage()
 -------------------------------------------------------------------------------------------------------
 
+os.execute('getcpu.bat')
+
+readcpu = io.input("cpu-usage.txt")
+readcpu = tostring(io.read("*line"))
+
+cpumagic = {}
+cpumagic[1] = tostring(io.read("*line"))
+cpumagic[2] = tostring(io.read("*line"))
+cpumagic[3] = tostring(io.read("*line"))
+cpumagic[4] = tostring(io.read("*line"))
+cpumagic[5] = tostring(io.read("*line"))
+cpumagic[6] = tostring(io.read("*line"))
+cpumagic[7] = tostring(io.read("*line"))
+cpumagic[8] = tostring(io.read("*line"))
+cpumagic[9] = tostring(io.read("*line"))
+cpumagic[10] = tostring(io.read("*line"))
+cpumagic[11] = tostring(io.read("*line"))
+cpumagic[12] = tostring(io.read("*line"))
+cpumagic[13] = tostring(io.read("*line"))
+cpumagic[14] = tostring(io.read("*line"))
+cpumagic[15] = tostring(io.read("*line"))
+cpumagic[16] = tostring(io.read("*line"))
+cpumagic[17] = tostring(io.read("*line"))
+cpumagic[18] = tostring(io.read("*line"))
+cpumagic[19] = tostring(io.read("*line"))
+cpumagic[20] = tostring(io.read("*line"))
+cpumagic[21] = tostring(io.read("*line"))
+cpumagic[22] = tostring(io.read("*line"))
+cpumagic[23] = tostring(io.read("*line"))
+cpumagic[24] = tostring(io.read("*line"))
+cpumagic[25] = tostring(io.read("*line"))
+cpumagic[26] = tostring(io.read("*line"))
+
 -- Check if resources are below a dangerous level, if they are, run the email script.
+i = 2
+while i < 26 do
+	o = tonumber(string.match(cpumagic[i], ('%d*[.]%d%d%d%d%d%d')))
+	print(o)
+	i = i + 1
+	if o > 70 
+	then dofile("email.lua")
+else
+end
+end
+
 if getspace <= 50
 	then
 	dofile("email.lua")
@@ -61,9 +105,6 @@ if getram <= 2048
 	else
 end
 -------------------------------------------------------------------------------------------------------
-
--- Moved cpu functions to seperate file, lets run it. 
-dofile("getcpu.lua")
 
 -------------------------------------------------------------------------------------------------------
 
