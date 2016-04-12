@@ -51,7 +51,7 @@ collectgarbage()
 -- Lets run a command to get CPU usage, time etc.
 os.execute('getcpu.bat')
 -- Load the file in memory to get what we need.
-readcpusage = assert(io.input("cpu.txt"))
+readcpusage = assert(io.input("cpu-usage.txt"))
 tostring(readcpusage)
 readcpusage = io.read("*all")
 getcpu = tostring(readcpusage)
@@ -66,11 +66,12 @@ local m = Mailgun({
 })
 
 m:send_email({
+  from = "",
   to = "",
   cc = "",
-  subject = "Server Report for" .. pcname ..,
+  subject = "Server Report for ",
   html = false,
-  body = [[Server Report for ]] .. pcname "\n" .. [[
+  body = [[Server Report for ]] .."\n".. [[
   		Ram:]] .. getram .. [[ MB Free]] .. "\n" .. [[
   		HDD:]] .. getspace .. [[ GB Free]] .. "\n\n\n\n" .. [[
       CPU Usage Below:]] .. getcpu .. [[
