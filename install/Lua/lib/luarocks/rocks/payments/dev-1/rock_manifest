@@ -1,0 +1,20 @@
+rock_manifest = {
+   doc = {
+      ["README.md"] = "745680bf658063a301e1b696f7310ac5"
+   },
+   lua = {
+      payments = {
+         ["amazon.lua"] = "0f69977379ad144ba17e98c5972ebe0d",
+         ["base_client.lua"] = "ec3ac17c7dabb08bac4248019e16dfb8",
+         paypal = {
+            ["adaptive.lua"] = "6ba8d6300af2e91dc7c7867fb9eed9f2",
+            ["express_checkout.lua"] = "ecee4f36ed4fda4970a6d4e0e67f0477",
+            ["helpers.lua"] = "a462cfd3fc1f037bcac0fc666651bc5e",
+            ["rest.lua"] = "b622be8215737aec4b460fd4edd86d29"
+         },
+         ["paypal.lua"] = "9af8b5915e8bd64ef6beafb1988d6ec3",
+         ["stripe.lua"] = "46da751b75dd04c95f5adea07757338e"
+      }
+   },
+   ["payments-dev-1.rockspec"] = "db02afcb24106505fa5d59d360482676"
+}

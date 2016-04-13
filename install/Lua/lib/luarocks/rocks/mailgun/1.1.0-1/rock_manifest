@@ -1,0 +1,12 @@
+rock_manifest = {
+   doc = {
+      ["README.md"] = "05c3ac1577b21e7562306536aee19724"
+   },
+   lua = {
+      mailgun = {
+         ["init.lua"] = "4edcc0d7b97367e2b5135256b8dadb8a"
+      },
+      ["mailgun1util.lua"] = "3e42b237390f2167dc70a2de35edc132"
+   },
+   ["mailgun-1.1.0-1.rockspec"] = "7564bf05bb7508c18fb0127985ccf965"
+}

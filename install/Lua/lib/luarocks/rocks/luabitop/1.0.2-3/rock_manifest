@@ -1,0 +1,19 @@
+rock_manifest = {
+   doc = {
+      ["api.html"] = "d48d8be95b60bc35852c231f7ef5e607",
+      ["bluequad-print.css"] = "31733f4f7cd28b01199f5702e75805f3",
+      ["bluequad.css"] = "4615005087061da358959dc58647ce6b",
+      ["changes.html"] = "6452feeccb4aed3fb0e240b672e52a2e",
+      ["contact.html"] = "5480e491b177272b61cd0cc16473d144",
+      img = {
+         ["contact.png"] = "7337938a16a1c6a0fbf0f407d97f5b13"
+      },
+      ["index.html"] = "ee72c255de63bc68af4b701568b27460",
+      ["install.html"] = "56dae3a01d339ad40524d2969b6f008b",
+      ["semantics.html"] = "190774cc77fc3a1b122d39e23bd52d62"
+   },
+   lib = {
+      ["bit.dll"] = "ae55363a39f4e946b7d8127cf0778d2a"
+   },
+   ["luabitop-1.0.2-3.rockspec"] = "059a7a7505fc4b77d1448fbc9e132977"
+}

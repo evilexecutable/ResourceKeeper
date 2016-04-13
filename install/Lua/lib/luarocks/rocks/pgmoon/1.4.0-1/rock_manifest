@@ -1,0 +1,15 @@
+rock_manifest = {
+   doc = {
+      ["README.md"] = "46b32c520e22c5fcd9c49d38447afe6b"
+   },
+   lua = {
+      pgmoon = {
+         ["arrays.lua"] = "2117ad1d0deba7dba032dfa544d9ecd6",
+         ["crypto.lua"] = "5a47c3b3e29dc1ed46eeaf2a735376fe",
+         ["init.lua"] = "5d85786e554436f3ea6331d57e2d3a03",
+         ["json.lua"] = "6e7b81249033c1973f6bf4ea68de0284",
+         ["socket.lua"] = "ef38ccb514b6ee4fe0aff9642a2171f6"
+      }
+   },
+   ["pgmoon-1.4.0-1.rockspec"] = "24a2e6e243d90df96af9b1f626b831f1"
+}

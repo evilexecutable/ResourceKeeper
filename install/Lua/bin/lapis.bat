@@ -1,0 +1,3 @@
+@echo off
+"D:\Programs\Lua\bin\lua.exe" -e "package.path=\"C:\\Users\\Admin\\AppData\\Roaming/luarocks/share/lua/5.1/?.lua;C:\\Users\\Admin\\AppData\\Roaming/luarocks/share/lua/5.1/?/init.lua;d:\\programs\\lua\\/share/lua/5.1/?.lua;d:\\programs\\lua\\/share/lua/5.1/?/init.lua;C:\\Program Files (x86)\\LuaRocks\\lua\\?.lua;\"..package.path; package.cpath=\"C:\\Users\\Admin\\AppData\\Roaming/luarocks/lib/lua/5.1/?.dll;d:\\programs\\lua\\/lib/lua/5.1/?.dll;\"..package.cpath" -e "local k,l,_=pcall(require,\"luarocks.loader\") _=k and l.add_context(\"lapis\",\"1.5.0-2\")" "d:\programs\lua\\lib\luarocks\rocks\lapis\1.5.0-2\bin\lapis" %*
+exit /b %ERRORLEVEL%
