@@ -28,9 +28,9 @@ m:send_email({
   from = "",
   to = "",
   cc = "",
-  subject = "Server Report for ",
+  subject = "Server Report for ".. readhostname,
   html = false,
-  body = [[Server Report for ]] .."\n".. [[
+  body = [[Server Report ]] .."\n".. [[
   		Ram:]] .. getram .. [[ MB Free]] .. "\n" .. [[
   		HDD:]] .. getspace .. [[ GB Free]] .. "\n\n\n\n" .. [[
       CPU Usage:]] .. o .. [[ %]]

@@ -18,8 +18,10 @@
 ---------------------------------------------------------------------------
 
 -- Get Hostname for later use.
-pcname = os.execute("hostname")
-tostring(pcname)
+pcname = os.execute("hostname > host.txt")
+hostname = io.input("host.txt")
+tostring(hostname)
+readhostname = io.read("*all")
 
 -- Lets run a CMD command that will get the free space for the C drive and save to a file and load that file in memory.
 os.execute('wmic /node:"%COMPUTERNAME%" LogicalDisk Where DriveType="3" Get DeviceID,FreeSpace|find /I "c:" > freespace.txt')
