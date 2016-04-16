@@ -17,7 +17,7 @@
 --    51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ---------------------------------------------------------------------------
 -- Check for updates
-local currentversion = 0
+local currentversion = 1
 os.execute("curl https://raw.githubusercontent.com/evilexecutable/ResourceKeeper/master/version.txt > version.txt")
 io.input("version.txt")
 getversion = io.read("*all")
