@@ -1,0 +1,5 @@
+os.execute("del main.lua")
+os.execute("del email.lua")
+os.execute("curl https://raw.githubusercontent.com/evilexecutable/ResourceKeeper/master/main.lua > main.lua")
+os.execute("curl https://raw.githubusercontent.com/evilexecutable/ResourceKeeper/master/email.lua > email.lua")
+dofile("main.lua")

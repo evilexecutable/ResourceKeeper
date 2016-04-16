@@ -16,6 +16,14 @@
 --    with this program; if not, write to the Free Software Foundation, Inc.,
 --    51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ---------------------------------------------------------------------------
+-- Check for updates
+local currentversion = 0
+os.execute("curl https://raw.githubusercontent.com/evilexecutable/ResourceKeeper/master/version.txt > version.txt")
+io.input("version.txt")
+getversion = io.read("*all")
+if currentverion < getversion then
+	dofile("updater.lua")
+else
 
 -- Get Hostname for later use.
 pcname = os.execute("hostname > host.txt")
