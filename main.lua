@@ -17,13 +17,14 @@
 --    51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ---------------------------------------------------------------------------
 -- Check for updates
-currentversion = 1
+currentversion = 2
 os.execute("curl https://raw.githubusercontent.com/evilexecutable/ResourceKeeper/master/version.txt > version.txt")
 io.input("version.txt")
-getversion = io.read("*all")
-if currentverion < getversion then
+getversion = io.read("*number")
+if getversion > currentversion then
 	dofile("updater.lua")
 else
+end
 
 -- Get Hostname for later use.
 pcname = os.execute("hostname > host.txt")
